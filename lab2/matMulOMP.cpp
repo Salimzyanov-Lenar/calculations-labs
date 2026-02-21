@@ -63,20 +63,20 @@ int main(int argc, char *argv[])
     // Sequantial matrix multiplication
     
     int threads;
-    //omp_set_num_threads(8);
+    omp_set_num_threads(2);
     #pragma omp parallel shared(threads)
     {
-        threads = omp_get_num_threads();
+    threads = omp_get_num_threads();
     
     #pragma for    
     for (int i=0; i < N; i++)
-	for (int j = 0; j < N; j++)
+    	for (int j = 0; j < N; j++)
         {
-	    C[i*N + j] = 0;
-	    for (int k = 0; k < N; k++)
-	    {
-		C[i*N + j] += A[i*N + k] * B[k*N + j];
-	    }
+	        C[i*N + j] = 0;
+	        for (int k = 0; k < N; k++)
+	        {
+		        C[i*N + j] += A[i*N + k] * B[k*N + j];
+	        }
         }
     }
     

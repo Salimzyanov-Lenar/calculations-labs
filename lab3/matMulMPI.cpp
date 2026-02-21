@@ -110,7 +110,8 @@ int main(int argc, char *argv[])
 	return -1;
     }
     
-    const int N = atoi(argv[1]);
+    //const int N = atoi(argv[1]);
+    int N = atoi(argv[1]);
     
     cout << "Begin initializing ..." << endl;
     
@@ -142,7 +143,7 @@ int main(int argc, char *argv[])
 	
 	MPI_Comm_size(MPI_COMM_WORLD, &ProcNum);
 	MPI_Comm_rank(MPI_COMM_WORLD, &ProcRank);
-	//MPI_Bcast(&N, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Bcast(&N, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	
 	MatrixMultiplicationMPI(A, B, C, N);
 	    
