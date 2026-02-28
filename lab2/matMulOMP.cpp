@@ -63,12 +63,12 @@ int main(int argc, char *argv[])
     // Sequantial matrix multiplication
     
     int threads;
-    omp_set_num_threads(2);
+    omp_set_num_threads(32);
     #pragma omp parallel shared(threads)
     {
     threads = omp_get_num_threads();
     
-    #pragma for    
+    #pragma omp for    
     for (int i=0; i < N; i++)
     	for (int j = 0; j < N; j++)
         {
