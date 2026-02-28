@@ -81,8 +81,6 @@ void MatrixMultiplicationMPI(double *A, double *B, double *C, int Size)
 	delete []bufA;
 	delete []bufB;
 	delete []bufC;
-	
-	MPI_Finalize();
 }
 
 // Matrix output
@@ -167,5 +165,6 @@ int main(int argc, char *argv[])
     delete [] B;
     delete [] C;
     
+    MPI_Finalize();
     return 0;
 }
